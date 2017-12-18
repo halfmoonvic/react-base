@@ -7,19 +7,12 @@ import React, { Component } from 'react'
 /**** 当前组件的 子组件等 ***/
 
 class Hello extends Component {
-  handleClick() {
-    console.log('hello')
-  }
   render() {
-    const s = {'fontSize': '20px', 'color': 'blue'}
-    const arr = ['aa', 'bb', 'cc']
-
+    console.log(this.props)
     return (
-      <div className="wrap" style={s}>
-        <button onClick={this.handleClick}>button</button>
-        <ul>
-          {arr.map((item, index) => <li key={index+item}>{item}</li>)}
-        </ul>
+      <div className="wrap">
+        <span>你好啊， </span>
+        <span>{this.props.name}！</span>
       </div>
     )
   }
