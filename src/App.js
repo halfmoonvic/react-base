@@ -8,11 +8,27 @@ import React, { Component } from 'react'
 import Hello from 'container/hello/hello'
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      text: ''
+    }
+
+    this.getSonsValue = this.getSonsValue.bind(this)
+  }
+  getSonsValue(val) {
+    // console.log(val)
+    this.setState({
+      text: val
+    })
+  }
   render() {
-    const yourname = '格里高利'
     return (
-      <div className="app">
-        <Hello name={yourname}></Hello>
+      <div>
+        <Hello passval={this.getSonsValue}></Hello>
+        <br/><hr/><br/>
+        <h2>App组件接受自Hello的值： <br/> {this.state.text}</h2>
       </div>
     )
   }

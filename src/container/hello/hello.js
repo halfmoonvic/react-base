@@ -8,11 +8,9 @@ import React, { Component } from 'react'
 
 class Hello extends Component {
   render() {
-    console.log(this.props)
     return (
       <div className="wrap">
-        <span>你好啊， </span>
-        <span>{this.props.name}！</span>
+        <button onClick={() => this.props.passval('我是来自 Hello 组件啊')}>传值啊</button>
       </div>
     )
   }
