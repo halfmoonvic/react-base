@@ -10,7 +10,7 @@ class Test extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      val: ''
+      stateChange: ''
     }
     console.log('@init=0. constructor')
   }
@@ -42,7 +42,7 @@ class Test extends Component {
       <div>
         <h2 onClick={() => {
           this.setState({
-            val: 'hehe'
+            stateChange: 'changeState'
           })
         }}>改变本地 state</h2>
       </div>
@@ -54,7 +54,7 @@ class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      val: ''
+      propChange: ''
     }
   }
   render() {
@@ -62,10 +62,10 @@ class App extends Component {
       <div>
         <h2 onClick={() => {
           this.setState({
-            val: 'change'
+            propChange: 'changeProps'
           })
         }}>app组件主动更改穿过去的 props</h2>
-        <Test name={this.state.val} ></Test>
+        <Test passedAppValue={this.state.propChange} ></Test>
       </div>
     )
   }
