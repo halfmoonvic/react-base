@@ -1,33 +1,74 @@
 /**** React应用依赖组件 ****/
 // core
 import React, { Component } from 'react'
-import { BrowserRouter as Router, Route, Link, Switch, Redirect } from 'react-router-dom'
 /******* 第三方 组件库 *****/
 /**** 本地公用变量 公用函数 **/
 /******* 本地 公用组件 *****/
 /**** 当前组件的 子组件等 ***/
 
+class Test extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      val: ''
+    }
+    console.log('@init=0. constructor')
+  }
+  componentWillMount() {
+    console.log('@init=1. componentWillMount')
+  }
+  componentDidMount() {
+    console.log('@init=2. componentDidMount')
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('@change=1. componentWillReceiveProps', nextProps)
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('@change=2. shouldComponentUpdate', nextProps, nextState)
+    return true
+  }
+  componentWillUpdate() {
+    console.log('@change=3. componentWillUpdate')
+  }
+  componentDidUpdate() {
+    console.log('@change=4. componentDidUpdate')
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
+  }
+  render() {
+    console.log('   render    ')
+    return (
+      <div>
+        <h2 onClick={() => {
+          this.setState({
+            val: 'hehe'
+          })
+        }}>改变本地 state</h2>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      val: ''
+    }
+  }
   render() {
     return (
-      <Router>
-        <div>
-          <Link to="/about">关于</Link>
-          <br/>
-          <Link to="/mine">个人主页</Link>
-          <br/><hr/><br/>
-          <Switch>
-            <Redirect path='/' exact to='/about'></Redirect>
-            <Route path="/about" component={About}></Route>
-            <Route path="/mine" component={Mine}></Route>
-          </Switch>
-        </div>
-      </Router>
+      <div>
+        <h2 onClick={() => {
+          this.setState({
+            val: 'change'
+          })
+        }}>app组件主动更改穿过去的 props</h2>
+        <Test name={this.state.val} ></Test>
+      </div>
     )
   }
 }
 
 export default App
-
-const About = (props) => <h1>关于页面</h1>
-const Mine = (props) => <h1>个人主页页面</h1>
