@@ -2,11 +2,24 @@ import React, { Component } from 'react';
 
 // 父组件
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      text: '父组件'
+    }
+
+    this.acceptValue = this.acceptValue.bind(this)
+  }
+  acceptValue(val) {
+    this.setState({
+      text: this.state.text + val
+    })
+  }
   render() {
     return (
       <div className="app">
-        <h2>父组件本身内容</h2>
-        <SonComp text={'父组件传递的内容'}></SonComp>
+        <h2>{this.state.text}</h2>
+        <SonComp passValue={this.acceptValue}></SonComp>
       </div>
     )
   }
@@ -16,9 +29,7 @@ class App extends Component {
 class SonComp extends Component {
   render() {
     return (
-      <div className="son">
-        {this.props.text}
-      </div>
+      <button onClick={() => this.props.passValue('from son')}>子→父传值</button>
     )
   }
 }
