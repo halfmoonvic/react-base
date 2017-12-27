@@ -59,12 +59,16 @@ this.setState({
 3. 不同于 vue 的一点是，react对同名的引用仅引用最后一个被命名的元素 （vue 是一个数组集合）
 4. 备注： document.querySelector 是返回第一个被引用的元素
 
-### 八、 路由
+### 八、 生命周期
+[生命周期](https://zhuanlan.zhihu.com/p/24926575)
+
+![声明周期](./src/Lifecycle.png)
+
+### 九、 路由
 1. Router 仅允许有一个子元素，路由均需在此元素下声明
 2. Link 控制 url
 3. Route 根据 url 加载相应的 component
 4. Redirect 重定向路径致其它的路径
 5. Switch 当 url 与 多个 Route 上多个 path 相匹配的时候，返回第一个返回的元素
 
-### 九、 生命周期
-[生命周期](https://zhuanlan.zhihu.com/p/24926575)
+

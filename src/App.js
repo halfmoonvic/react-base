@@ -1,34 +1,71 @@
-import React, { Component } from 'react';
+/**** React应用依赖组件 ****/
+// core
+import React, { Component } from 'react'
 
-// 父组件
-class App extends Component {
+class Test extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      val: ''
+    }
+    console.log('@init=0. constructor')
+  }
+  componentWillMount() {
+    console.log('@init=1. componentWillMount')
+  }
   componentDidMount() {
-    const domEl = this.refs.domEl
-    const compEl = this.refs.compEl
+    console.log('@init=2. componentDidMount')
+  }
+  componentWillReceiveProps(nextProps) {
+    console.log('@change=1. componentWillReceiveProps', nextProps)
+  }
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log('@change=2. shouldComponentUpdate', nextProps, nextState)
+    return true
+  }
+  componentWillUpdate() {
+    console.log('@change=3. componentWillUpdate')
+  }
+  componentDidUpdate() {
+    console.log('@change=4. componentDidUpdate')
+  }
+  componentWillUnmount() {
+    console.log('componentWillUnmount')
+  }
+  render() {
+    console.log('@render @render')
+    return (
+      <div>
+        <button onClick={() => {
+          this.setState({
+            val: 'hehe'
+          })
+        }}>改变本地 state</button>
+      </div>
+    )
+  }
+}
 
-    console.log(domEl)
-    console.log(compEl)
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      val: ''
+    }
   }
   render() {
     return (
       <div className="app">
-        <h2 ref="domEl">父组件本身内容</h2>
-        <SonComp ref="compEl" text={'父组件传递的内容'}></SonComp>
+        <button onClick={() => {
+          this.setState({
+            val: 'change'
+          })
+        }}>app组件主动更改穿过去的 props</button>
+        <br/><br/>
+        <Test name={this.state.val} ></Test>
       </div>
     )
   }
 }
-
-// 子组件
-class SonComp extends Component {
-  render() {
-    return (
-      <div className="son">
-        {this.props.text}
-      </div>
-    )
-  }
-}
-
 
 export default App
