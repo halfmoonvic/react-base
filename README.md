@@ -9,7 +9,7 @@
 5. 事件名称 书写规范为 小驼峰，如 `onClick onTouchStart onTouchMove` 等
 
 ### 三、 React.createElement
-1. createElemen 很像DOM本身的document.createElement函数，我们可以使用它来创建标签元素
+1. createElement 很像DOM本身的document.createElement函数，我们可以使用它来创建标签元素
 2. 其第一个参数标识标签类型
 3. React.createElement 第二个参数是一个对象，最后生成的是 html元素的 属性
 4. React.createElement 第三个参数是该元素的内容，文本或者其它标签元素。
