@@ -1,29 +1,27 @@
 import React, { Component } from 'react';
 
+// 父组件
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      flag: true
-    }
-
-    // this.handleClick = this.handleClick.bind(this)
-  }
-  handleClick() {
-    console.log('this: ', this)
-
-    this.setState({
-      flag: !this.state.flag
-    })
-  }
   render() {
     return (
       <div className="app">
-        <div>{this.state.flag ? 'Good Morning' : 'Good Afternoon'}</div>
-        <button onClick={this.handleClick}>更改 state.text</button>
+        <h2>父组件本身内容</h2>
+        <SonComp text={'父组件传递的内容'}></SonComp>
       </div>
     )
   }
 }
 
-export default App;
+// 子组件
+class SonComp extends Component {
+  render() {
+    return (
+      <div className="son">
+        {this.props.text}
+      </div>
+    )
+  }
+}
+
+
+export default App
