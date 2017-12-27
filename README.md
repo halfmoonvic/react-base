@@ -51,6 +51,8 @@ this.setState({
 ### 七、 获取真实dom节点
 1. 同 vue 差不多 （`this.$refs.XXX`)
 2. `this.refs.XXX`，注意并没有 $ 符
+3. 不同于 vue 的一点是，react对同名的引用仅引用最后一个被命名的元素 
+4. 备注： document.querySelector 是返回第一个被引用的元素
 
 ### 八、 路由
 1. Router 仅允许有一个子元素，路由均需在此元素下声明
