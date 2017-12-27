@@ -2,24 +2,18 @@ import React, { Component } from 'react';
 
 // 父组件
 class App extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      text: '父组件'
-    }
+  componentDidMount() {
+    const domEl = this.refs.domEl
+    const compEl = this.refs.compEl
 
-    this.acceptValue = this.acceptValue.bind(this)
-  }
-  acceptValue(val) {
-    this.setState({
-      text: this.state.text + val
-    })
+    console.log(domEl)
+    console.log(compEl)
   }
   render() {
     return (
       <div className="app">
-        <h2>{this.state.text}</h2>
-        <SonComp passValue={this.acceptValue}></SonComp>
+        <h2 ref="domEl">父组件本身内容</h2>
+        <SonComp ref="compEl" text={'父组件传递的内容'}></SonComp>
       </div>
     )
   }
@@ -29,7 +23,9 @@ class App extends Component {
 class SonComp extends Component {
   render() {
     return (
-      <button onClick={() => this.props.passValue('from son')}>子→父传值</button>
+      <div className="son">
+        {this.props.text}
+      </div>
     )
   }
 }
