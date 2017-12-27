@@ -1,0 +1,13 @@
+@mixin flex($justify: flex-start, $align-items: center, $dir: row, $wrap: nowrap, $align-content: stretch) {
+  display: flex;
+  flex-flow: $dir $wrap;
+  justify-content: $justify;
+  align-items: $align-items;
+  align-content: $align-content;
+}
+
+.app {
+  @include flex(center);
+  font-size: 30px;
+  color: red;
+}
