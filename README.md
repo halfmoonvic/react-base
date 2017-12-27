@@ -1,7 +1,14 @@
 ### 一、 ReactDOM.render()
 1. ReactDOM.render 是 React 的最基本方法，用于将模板转为 HTML 语言，并插入指定的 DOM 节点。
 
-### 二、 React.createElement
+### 二、 JSX 的基本语法规则
+1. jsx 是一种语法(html也是一种语法），通过它来书写 React 元素。
+2. JSX 的基本语法规则：遇到 HTML 标签（以 <strong style="color:red"><</strong> 开头），就用 HTML 规则解析；遇到代码块（以 <strong style="color:red">{</strong> 开头），就用 JavaScript 规则解析。
+3. render 输出的注释 `  {/* something */}`
+4. html 当中的 class 书写成 className
+5. 事件名称 书写规范为 小驼峰，如 `onClick onTouchStart onTouchMove` 等
+
+### 三、 React.createElement
 1. createElemen 很像DOM本身的document.createElement函数，我们可以使用它来创建标签元素
 2. 其第一个参数标识标签类型
 3. React.createElement 第二个参数是一个对象，最后生成的是 html元素的 属性
@@ -16,11 +23,6 @@ var helloWorld = React.createElement(
 )
 var helloWorld = <div className="cls">Hello World</div>
 ```
-
-### 三、 JSX 的基本语法规则
-1. jsx 是一种语法(html也是一种语法），通过它来书写 React 元素。
-2. JSX 的基本语法规则：遇到 HTML 标签（以 <strong style="color:red"><</strong> 开头），就用 HTML 规则解析；遇到代码块（以 <strong style="color:red">{</strong> 开头），就用 JavaScript 规则解析。
-3. html 当中的 class 书写成 className
 
 ### 四、 组件类
 1. 组件名称以大写字母开头。 这是必需的，因为我们将处理HTML元素和React元素的混合。 小写名称保留给HTML元素。 事实上，请继续尝试将React组件命名为“button”

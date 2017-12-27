@@ -7,7 +7,7 @@
 }
 
 .app {
-  @include flex(center);
+  // @include flex(center, center, column);
   font-size: 30px;
-  color: red;
+  // color: red;
 }
