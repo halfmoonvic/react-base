@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 
-import TestComp from './comp.js'
-
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      flag: true
+    }
+
+    // this.handleClick = this.handleClick.bind(this)
+  }
+  handleClick() {
+    console.log('this: ', this)
+
+    this.setState({
+      flag: !this.state.flag
+    })
+  }
   render() {
     return (
       <div className="app">
-        <TestComp></TestComp>
-        {/*<testcomp>啊哈哈哈</testcomp>*/}
+        <div>{this.state.flag ? 'Good Morning' : 'Good Afternoon'}</div>
+        <button onClick={this.handleClick}>更改 state.text</button>
       </div>
     )
   }

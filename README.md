@@ -29,7 +29,7 @@ var helloWorld = <div className="cls">Hello World</div>
 2. Hello 就是一个组件类。模板插入 <Hello /> （<Hello></Hello>)时，会自动生成 Hello 的一个实例（**"组件"都指组件类的实例**）。所有组件类都必须有自己的 render 方法，用于输出组件。组件类的第一个字母必须大写。另外，组件类只能包含一个顶层标签，否则也会报错。
 
 ### 五、 `this.state`
-* 组件本地值 初始状态定义 需在 constructor 当中进行
+* 声明方式： 组件本地值 初始状态定义 需在 constructor 当中进行
 ```
 constructor(props) {
   super(props)
@@ -38,12 +38,15 @@ constructor(props) {
   }
 }
 ```
-* `state 的修改`
+* 更改：`state 的修改`
 ```
 this.setState({
   initState: '新值'
 })
 ```
+* 函数执行时，需要绑定 this 指针
+    1. constructor 处绑定 this，性能最好
+    2. 箭头函数内部传递 this，性能次之（每次渲染都会生成一个函数），但可以传值
 
 ### 六、 `this.props`
 1. 组件的属性可以在组件类的 this.props 对象上获取，比如 name 属性就可以通过 this.props.name 读取。this.props 对象的属性与组件的属性一一对应，但是有一个例外，就是 this.props.children 属性。它表示组件的所有子节点
